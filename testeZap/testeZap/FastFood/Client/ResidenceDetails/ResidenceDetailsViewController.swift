@@ -40,6 +40,9 @@ class ResidenceDetailsViewController: UIViewController {
         self.lblNameHotel.text = residenceDetail?.address?.city ?? ""
         self.lblConvenience.text = "Banheiros: \(residenceDetail?.bathrooms ?? 0) | Quartos: \(residenceDetail?.bedrooms ?? 0)"
         self.mapConfig()
+        
+        self.pageControl.currentPage = 0
+        self.pageControl.numberOfPages = residenceDetail?.images?.count ?? 0
     }
     
     private func mapConfig() {
@@ -58,25 +61,13 @@ class ResidenceDetailsViewController: UIViewController {
         
         mapView.addAnnotation(annotation)
     }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-       let visibleRect = CGRect(origin: self.collectionView.contentOffset, size: self.collectionView.bounds.size)
-       let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-       if let visibleIndexPath = self.collectionView.indexPathForItem(at: visiblePoint) {
-                self.pageControl.currentPage = visibleIndexPath.row
-       }
-    }
-    
-    // MARK: - @IBAction
-    @IBAction func changeImage(_ sender: UIPageControl) {
-        self.collectionView.scrollToItem(at: IndexPath(row: sender.currentPage, section: 0), at: .centeredHorizontally, animated: true)
-    }
-    
-    
+        
 }
 
-extension ResidenceDetailsViewController: UICollectionViewDelegate {
-    
+extension ResidenceDetailsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: view.layer.frame.size.height)
+    }
 }
 
 extension ResidenceDetailsViewController: UICollectionViewDataSource {
@@ -95,6 +86,10 @@ extension ResidenceDetailsViewController: UICollectionViewDataSource {
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.pageControl.currentPage = indexPath.row
     }
     
     
