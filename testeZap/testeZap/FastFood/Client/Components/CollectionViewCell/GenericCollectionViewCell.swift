@@ -10,14 +10,11 @@ import UIKit
 class GenericCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imgHotel: CustomImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+        
+    internal func setImage(image: String) {
+        DispatchQueue.main.async {
+            self.imgHotel.downloadImageFrom(urlString: image, imageMode: .scaleAspectFill)
+        }
     }
     
-    private func setImage(image: String) {
-        self.imgHotel.downloadImageFrom(urlString: image, imageMode: .scaleAspectFill)
-    }
-
 }
