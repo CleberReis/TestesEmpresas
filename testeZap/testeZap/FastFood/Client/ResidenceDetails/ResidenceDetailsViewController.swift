@@ -28,6 +28,10 @@ class ResidenceDetailsViewController: UIViewController {
     // MARK: - Super Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        
         setup()
     }
     
@@ -55,6 +59,24 @@ class ResidenceDetailsViewController: UIViewController {
         mapView.addAnnotation(annotation)
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+       let visibleRect = CGRect(origin: self.collectionView.contentOffset, size: self.collectionView.bounds.size)
+       let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+       if let visibleIndexPath = self.collectionView.indexPathForItem(at: visiblePoint) {
+                self.pageControl.currentPage = visibleIndexPath.row
+       }
+    }
+    
+    // MARK: - @IBAction
+    @IBAction func changeImage(_ sender: UIPageControl) {
+        self.collectionView.scrollToItem(at: IndexPath(row: sender.currentPage, section: 0), at: .centeredHorizontally, animated: true)
+    }
+    
+    
+}
+
+extension ResidenceDetailsViewController: UICollectionViewDelegate {
+    
 }
 
 extension ResidenceDetailsViewController: UICollectionViewDataSource {
@@ -74,5 +96,6 @@ extension ResidenceDetailsViewController: UICollectionViewDataSource {
         
         return cell
     }
+    
     
 }

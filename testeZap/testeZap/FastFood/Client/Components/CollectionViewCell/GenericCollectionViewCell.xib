@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="372" height="353"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ky-c4-Tmh" customClass="CustomImageView" customModule="testeZap" customModuleProvider="target">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotel" translatesAutoresizingMaskIntoConstraints="NO" id="9ky-c4-Tmh" customClass="CustomImageView" customModule="testeZap" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="372" height="353"/>
                     </imageView>
                 </subviews>
@@ -35,4 +35,7 @@
             <point key="canvasLocation" x="181.15942028985509" y="137.61160714285714"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="hotel" width="512" height="512"/>
+    </resources>
 </document>

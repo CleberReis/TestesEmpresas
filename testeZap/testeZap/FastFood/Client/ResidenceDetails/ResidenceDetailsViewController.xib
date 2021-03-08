@@ -26,7 +26,7 @@
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6Mv-GZ-PGk">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="376.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MBx-N1-4Ri">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="MBx-N1-4Ri">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -50,6 +50,9 @@
                 </mapView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Q6A-I2-5cs">
                     <rect key="frame" x="0.0" y="348.5" width="414" height="28"/>
+                    <connections>
+                        <action selector="changeImage:" destination="-1" eventType="valueChanged" id="i8a-JN-zZ0"/>
+                    </connections>
                 </pageControl>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

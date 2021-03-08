@@ -12,7 +12,9 @@ class GenericCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imgHotel: CustomImageView!
         
     internal func setImage(image: String) {
-        self.imgHotel.downloadImageFrom(urlString: image, imageMode: .scaleAspectFill)
+        DispatchQueue.main.async {
+            self.imgHotel.downloadImageFrom(urlString: image, imageMode: .scaleAspectFill)
+        }
     }
-
+    
 }
